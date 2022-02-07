@@ -1,4 +1,4 @@
-# Y2-Team-4
-Repository for the Team Project module in year 2 for The Bankers.
+# The Banker
+Repository for the Team Project module in year 2 for The Bankers (Team 4).
 
 A banking website that should allow the user to acces an account and make/manage transactions
