@@ -1,4 +1,4 @@
-# The Bankers
+# The Banker
 Repository for the Team Project module in year 2 for The Bankers (Team 4).
 github test
 
