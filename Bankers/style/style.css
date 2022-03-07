@@ -1,19 +1,96 @@
 h1{
+    display: inline;
     color: blueviolet;
     font-weight: bold;
 }
 
-a.button {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+body{
+  border-left: 60px;
+  border-right: 60px;
+  border-color: black;
+  border-style: solid;
 }
 
-ul {
-    list-style-type: none;
+a.button {
+  background-color: grey;
+  border: none;
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 32px;
+  padding-top: 0px;
 }
+
+.navbarr{
+  background-color: tomato;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px -1px rgba(0 ,0 ,0, 0.55);
+  color: aqua;
+  margin: 8px 22px 8px 22px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar{
+  padding: 25px 0;
+  background-color: grey;
+  text-align: center;
+  margin: 8px 22px 8px 22px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+.navbar ul
+{
+   list-style: none;
+}
+
+.navbar li {
+    float: left;
+    border-bottom: 20px;
+    font-size:xx-large;
+    text-align: center;
+  }
+  
+  a {
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+  }
+
+  .leftimg{
+    float: left;
+    padding-right: 20px;
+  }
+
+  .rightimg{
+    float: right;
+  }
+
+  .righttxt{
+    font-size: x-large;
+    font-weight: bold;
+
+  }
+
+  .lefttxt{
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 150px;
+  }
+
+  .footer{
+    position: absolute;
+    bottom: 0;
+    width: 93%;
+    height: 60px;
+    border-right:  60px;
+    border-color: white;
+    background-color: darkgreen;
+  }
