@@ -1,6 +1,6 @@
 <?php
 include "header.html";
-include "functions.php";
+include "include/functions.php";
 
 include "offersView.html";
 
