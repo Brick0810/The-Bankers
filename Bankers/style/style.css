@@ -60,6 +60,10 @@ a.button {
     font-size: 50px;
     text-align: center;
   }
+
+  .signup li{
+    padding: 10px;
+  }
   
   a {
     display: block;
@@ -86,17 +90,6 @@ a.button {
     font-size: x-large;
     font-weight: bold;
     padding-left: 150px;
-  }
-
-  .signup{
-    margin: auto;
-    width: 20%;
-    border: 15px solid white;
-    padding: 10px;
-  }
-
-  .signup ul{
-    list-style: none;
   }
 
   .footer{

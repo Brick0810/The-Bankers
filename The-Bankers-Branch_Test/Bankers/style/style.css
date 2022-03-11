@@ -95,8 +95,17 @@ a.button {
     padding: 10px;
   }
 
+  .signup p{
+    font-size: large;
+    font-weight: bold;
+  }
+
   .signup ul{
     list-style: none;
+  }
+
+  .signup li{
+    margin: 10px 0;
   }
 
   .footer{

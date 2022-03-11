@@ -4,13 +4,15 @@ include "include/functions.php";
 include "navbar.php";
 
 ?>
-
-<section class="style.css">
-<h2>Login</h2>
+<div class="signup">
 <form action="include/login-include.php" method="post">
-    <input type="text" name="name" placeholder="Username/Email...">
-    <input type="password" name="password" placeholder="Password...">
-    <button type="submit" name="submit">Login In</button>
+    <ul>
+        <li><p>Username/Email</p></li>
+        <li><input type="text" name="name" placeholder="Username/Email..."><li>
+        <li><p>Password</p></li>
+        <li><input type="password" name="password" placeholder="Password..."><li>
+        <li><button type="submit" name="submit">Login In</button><li>
+</ul>
 
 </form>
 
@@ -23,7 +25,7 @@ if(isset($_GET["error"])) // checks against the URL to see if the text error exi
         echo "<p>Login Incorrect, please try again!</p>";
     }
 ?>
-</section>
+</div>
 
 
 

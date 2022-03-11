@@ -4,18 +4,17 @@ include "include/functions.php";
 include "navbar.php";
 ?>
 
+
 <div class="signup">
 <h2>Sign Up</h2>
 <form action="include/signup-include.php" method="post">
-<ul>
-    <li><input type="text" name="firstName" placeholder="First Name..."></li>
-    <li><input type="text" name="surname" placeholder="Surname..."></li>
-    <li><input type="text" name="email" placeholder="Email..."></li>
-    <li><input type="text" name="userName" placeholder="Username..."></li>
-    <li><input type="password" name="password" placeholder="Password..."></li>
-    <li><input type="password" name="passwordRepeat" placeholder="Repeat Password..."></li>
-    <li><button type="submit" name="submit">Sign Up</button></li>
-</ul>
+    <input type="text" name="firstName" placeholder="First Name...">
+    <input type="text" name="surname" placeholder="Surname...">
+    <input type="text" name="email" placeholder="Email...">
+    <input type="text" name="userName" placeholder="Username...">
+    <input type="password" name="password" placeholder="Password...">
+    <input type="password" name="passwordRepeat" placeholder="Repeat Password...">
+    <button type="submit" name="submit">Sign Up</button>
 </form>
 
     <?php
@@ -43,8 +42,8 @@ include "navbar.php";
             }
         }
         ?>
-</div>
-</section>
+
+    </div>
 
 <?php
     include "footer.html";

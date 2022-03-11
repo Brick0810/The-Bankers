@@ -5,14 +5,19 @@ include "navbar.php";
 ?>
 
 <div class="signup">
-<h2>Sign Up</h2>
 <form action="include/signup-include.php" method="post">
 <ul>
+    <li><p>First Name:</p></li>
     <li><input type="text" name="firstName" placeholder="First Name..."></li>
+    <li><p>Surname:</p></li>
     <li><input type="text" name="surname" placeholder="Surname..."></li>
+    <li><p>Email:</p></li>
     <li><input type="text" name="email" placeholder="Email..."></li>
+    <li><p>Username:</p></li>
     <li><input type="text" name="userName" placeholder="Username..."></li>
+    <li><p>Password:</p></li>
     <li><input type="password" name="password" placeholder="Password..."></li>
+    <li><p>Re-Enter Password:</p></li>
     <li><input type="password" name="passwordRepeat" placeholder="Repeat Password..."></li>
     <li><button type="submit" name="submit">Sign Up</button></li>
 </ul>
