@@ -1,5 +1,11 @@
 <?php
-const DB_DATA_SOURCE = 'localhost';
-const DB_USERNAME = 'u2066800';
-const DB_PASSWORD = 'DM02aug02dm';
-const DB_DATABASE = 'u2066800';
+$dbServerName = "localhost";
+$dbUserName = "u2066800";
+$dbPassword = "DM02aug02dm";
+$dbName = "u2066800";
+
+$conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName);
+
+if(!$conn){
+    die("Connection failed: " . mysqli_connect_error());
+}

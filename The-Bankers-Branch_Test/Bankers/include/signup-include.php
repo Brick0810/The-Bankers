@@ -9,10 +9,9 @@ if(isset($_POST["submit"])) {
     $passwordRepeat = $_POST["passwordRepeat"];
 
     require_once 'connection.php';
-    $conn = mysqli_connect(DB_DATA_SOURCE,DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     require_once 'functions.php';
 
-    if(signUpEmptyInput($firstName, $surname, $email, $userName, $password, passwordrepeat) !== false){ // Calls function from function.php to check if any of the boxes are blank
+    if(signUpEmptyInput($firstName, $surname, $email, $userName, $password, $passwordRepeat) !== false){ // Calls function from function.php to check if any of the boxes are blank
         header("location: ../signup.php?error=emptyInput");
         exit();
     }
@@ -39,7 +38,6 @@ if(isset($_POST["submit"])) {
 
     createUser($conn, $firstName, $surname, $email, $userName, $password);
 }
-
 else {
     header("location: ../signup.php");
     exit();
