@@ -9,12 +9,12 @@ h1{
 body{
   border-left: 60px;
   border-right: 60px;
-  border-color: black;
+  border-color: darkcyan;
   border-style: solid;
 }
 
 a.button {
-  background-color: grey;
+  background-color: darkcyan;
   border: none;
   color: white;
   text-align: left;
@@ -41,7 +41,7 @@ a.button {
 
 .navbar{
   padding: 25px 0;
-  background-color: grey;
+  background-color: darkcyan;
   text-align: center;
   margin: 8px 22px 8px 22px;
   overflow: hidden;
@@ -91,12 +91,15 @@ a.button {
   .signup{
     margin: auto;
     width: 20%;
-    border: 15px solid white;
     padding: 10px;
   }
 
+  .signup body{
+    background-color: darkcyan;
+  }
+
   .signup p{
-    font-size: large;
+    font-size: x-large;
     font-weight: bold;
   }
 
@@ -113,7 +116,7 @@ a.button {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
+    background-color: darkcyan;
     color: white;
     text-align: center;
   }

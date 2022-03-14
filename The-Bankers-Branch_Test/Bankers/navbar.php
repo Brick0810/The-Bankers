@@ -9,10 +9,10 @@
 
     <?php
         if(isset($_SESSION[userId])){
-            echo "<li><a href='accounts.php' class=button>Accounts</a></li>";
-            echo "<li><a href='transactions.php' class=button>Transactions</a></li>";
-            echo "<li><a href='transfers.php' class=button>Transfers</a></li>";
-            echo "<li><a href='standingOrders.php' class=button>Standing Order</a></li>";
+            echo "<li><a href='accountsView.html' class=button>Accounts</a></li>";
+            echo "<li><a href='transactionsView.html' class=button>Transactions</a></li>";
+            echo "<li><a href='transfersView.html' class=button>Transfers</a></li>";
+            echo "<li><a href='standingOrdersView.html' class=button>Standing Order</a></li>";
             echo "<li><a href='include/logout-include.php' class=button>Logout</a></li>";
         } else{
             echo "<li><a href='login.php' class=button>Login</a></li>";
