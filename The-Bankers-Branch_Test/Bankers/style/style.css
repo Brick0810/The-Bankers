@@ -1,3 +1,7 @@
+html{
+  background-color: darkcyan;
+}
+
 h1{
     display: inline;
     float: left;
@@ -11,6 +15,7 @@ body{
   border-right: 60px;
   border-color: darkcyan;
   border-style: solid;
+  background-color: white
 }
 
 a.button {
@@ -86,6 +91,13 @@ a.button {
     font-size: x-large;
     font-weight: bold;
     padding-left: 150px;
+  }
+
+  .bottomtxt{
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 150px;
+    padding-bottom: 15px;
   }
 
   .signup{
