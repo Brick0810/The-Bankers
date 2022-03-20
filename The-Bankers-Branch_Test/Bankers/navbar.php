@@ -10,6 +10,7 @@
     <?php
         if(isset($_SESSION[userId])){
             echo "<li><a href='accounts.php' class=button>Accounts</a></li>";
+            echo "<li><a href='accounts.php' class=button>Account</a></li>";
             echo "<li><a href='transactions.php' class=button>Transactions</a></li>";
             echo "<li><a href='transfers.php' class=button>Transfers</a></li>";
             echo "<li><a href='standingOrders.php' class=button>Standing Order</a></li>";

@@ -15,4 +15,11 @@ $userName = $_SESSION["userName"];
 
 $row = displayAccountDetails($conn, $userName);
 
+echo "<h1> Account </h1>";
+foreach ($ as $) {
+    echo "<li>";
+    echo "Name: ";
+    echo "{$["name"]}</a>";
+}
+
 
