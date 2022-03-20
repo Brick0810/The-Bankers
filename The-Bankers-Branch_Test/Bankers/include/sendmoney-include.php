@@ -9,7 +9,7 @@ if(isset($_POST["submit"])) {
     $sortCode = $_POST["sortCode"];
     $amount = $_POST["amount"];
     $reference = $_POST["reference"];
-    $userNameFrom = $_SESSION["userName"];
+    $accountNumberFrom = $_SESSION["accountNumber"];
 
     require_once "connection.php";
     require_once "functions.php";
@@ -22,11 +22,11 @@ if(isset($_POST["submit"])) {
         header("location: ../sendMoney.php?error=accountNumberNonExistent");
         exit();
     }
-    if (sortCodeExists($conn, $accountNumber, $sortCode) !== false) {
+    if (sortCodeExists($conn, $sortCode) !== false) {
         header("location: ../sendMoney.php?error=sortCodeNonExistent");
         exit();
     }
-    if (balanceExists($conn, $userNameFrom, $amount) !== false) {
+    if (balanceExists($conn, $accountNumberFrom, $amount) !== false) {
         header("location: ../sendMoney.php?error=notEnoughBalance");
         exit();
     }
@@ -35,7 +35,7 @@ if(isset($_POST["submit"])) {
         exit();
     }
 
-    echo "HELLO";
+    sendMoney($conn, $accountNumberFrom, $accountNumber, $sortCode, $amount, $reference);
 
     // sendMoney($conn, $sortCode, $accountNumber);
 

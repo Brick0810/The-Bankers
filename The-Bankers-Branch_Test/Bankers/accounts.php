@@ -11,15 +11,16 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
     exit();
 }
 
-$userName = $_SESSION["userName"];
+$accountNumber = $_SESSION["accountNumber"];
 
-$row = displayAccountDetails($conn, $userName);
+$row = displayAccountDetails($conn, $accountNumber);
 
-echo "<h1> Account </h1>";
+// echo $row['userName'];
+
+/* echo "<h1> Account </h1>";
 foreach ($ as $) {
     echo "<li>";
     echo "Name: ";
-    echo "{$["name"]}</a>";
-}
+    echo "{$["name"]}</a>"; */
 
 

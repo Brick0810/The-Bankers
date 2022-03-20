@@ -120,17 +120,23 @@ function loginUser($conn, $userName, $password){
     }
     else if($checkPass === true){
         session_start();
-        $_SESSION["userId"] = $userIdExists["usersId"];
+        $_SESSION["accountNumber"] = getAccountNumber($conn, $userIdExists["userName"]);
         $_SESSION["userName"] = $userIdExists["userName"];
         header("location: ../index.php");
         exit();
     }
 }
 
-function generateAccountNumber(): int
+function generateAccountNumber($conn): int
 {
 
-    return mt_rand(1000000, 9999999);
+    $accountNumber = mt_rand(1000000, 9999999);
+    if(accountNumberExists($conn, $accountNumber) !== false)
+    {
+        return $accountNumber;
+    } else{
+        generateAccountNumber($conn);
+    }
 }
 
 function accountNumberExists($conn, $accountNumber)
@@ -154,30 +160,29 @@ function accountNumberExists($conn, $accountNumber)
     }
 }
 
-function generateSortCode(): string
+function generateSortCode($conn): string
 {
     $firstSection = mt_rand(100, 999);
     $secondSection = mt_rand(100, 999);
     $thirdSection = mt_rand(100, 999);
     $sortCode = $firstSection . "-" . $secondSection . "-" . $thirdSection;
-    return $sortCode;
-    /* if(!sortCodeExists($sortCode))
+    if(sortCodeExists($conn, $sortCode) !== false)
     {
         return $sortCode;
     } else{
-        generateSortCode();
-    } */
+        generateSortCode($conn);
+    }
 }
 
-function sortCodeExists($conn, $accountNumber, $sortCode){
-    $sql = "SELECT * FROM accounts WHERE accountNumber = ? AND sortCode = ?;";
+function sortCodeExists($conn, $sortCode){
+    $sql = "SELECT sortCode FROM accounts WHERE sortCode = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../sendMoney.php?error=stmtFailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "is", $accountNumber, $sortCode); // Binds the data from the user to the actual statement
+    mysqli_stmt_bind_param($stmt, "s",$sortCode); // Binds the data from the user to the actual statement
     mysqli_stmt_execute($stmt); // executes the statement
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -191,9 +196,9 @@ function sortCodeExists($conn, $accountNumber, $sortCode){
 
 
 function createAccountDetails($conn, $userName){
-    $accountNumber = generateAccountNumber();
+    $accountNumber = generateAccountNumber($conn);
     $accountType = "Personal";
-    $sortCode = generateSortCode();
+    $sortCode = generateSortCode($conn);
     $balance = 0;
     $sql = "INSERT INTO accounts(userName, accountNumber, balance, accountType, sortCode) VALUES (?, ?, ?, ?, ?);";
 
@@ -210,9 +215,9 @@ function createAccountDetails($conn, $userName){
     exit();
 }
 
-function displayAccountDetails($conn, $userName)
+function getAccountNumber($conn, $userName)
 {
-    $sql = "SELECT userName, accountNumber FROM accounts WHERE userName = ?;";
+    $sql = "SELECT accountNumber FROM accounts WHERE userName = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtFailed");
@@ -226,20 +231,41 @@ function displayAccountDetails($conn, $userName)
 
     if ($resultData > 0) {
         if ($row = mysqli_fetch_assoc($resultData)) {
-            return $row;
+            return $row["accountNumber"];
         }
     }
 }
 
-function balanceExists($conn, $userName, $amount){
-    $sql = "SELECT balance FROM accounts WHERE userName = ?;";
+function displayAccountDetails($conn, $accountNumber)
+{
+    $sql = "SELECT userName, accountNumber, balance, sortCode FROM accounts WHERE accountNumber = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtFailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "s", $userName); // Binds the data from the user to the actual statement
+    mysqli_stmt_bind_param($stmt, "s", $accountNumber); // Binds the data from the user to the actual statement
+    mysqli_stmt_execute($stmt); // executes the statement
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($resultData > 0) {
+        if ($row = mysqli_fetch_assoc($resultData)) {
+            return $row;
+        }
+    }
+}
+
+function balanceExists($conn, $accountNumberFrom, $amount){
+    $sql = "SELECT balance FROM accounts WHERE accountNumber = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../sendMoney.php?error=stmtFailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $accountNumberFrom); // Binds the data from the user to the actual statement
     mysqli_stmt_execute($stmt); // executes the statement
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -254,6 +280,34 @@ function balanceExists($conn, $userName, $amount){
         }
     }
 }
+
+function sendMoney($conn, $accountNumberFrom, $accountNumberTo, $sortCodeTo, $amount, $reference)
+{
+    $amount = intval($amount); // Changes amount from a string to an int to perform calculations
+    $date = date("Y-m-D");
+    $transactionID = 1212;
+
+    $accountInfoFrom = displayAccountDetails($conn, $accountNumberFrom);
+    $accountFromBalance = intval($accountInfoFrom["balance"]);
+
+    $accountInfoTo = displayAccountDetails($conn, $accountNumberTo);
+    $accountToBalance = intval($accountInfoTo["balance"]);
+
+    $accountFromBalance = $accountFromBalance - $amount;
+    $accountToBalance = $accountToBalance + $amount;
+
+    $sql = "INSERT INTO transactions(transactionID, accountNumberFrom, accountNumberTo, sortCodeTo, amount, transactionDate) VALUES (?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../sendMoney.php?error=stmtFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "iiisid", $transactionID,$accountNumberFrom, $accountNumberTo, $sortCodeTo, $amount, $date ); // Binds the data from the user to the actual statement
+    mysqli_stmt_execute($stmt); // executes the statement
+
+    echo "HELLO";
+}
+
 
 
 
