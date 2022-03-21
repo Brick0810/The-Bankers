@@ -21,7 +21,6 @@ function sendMoneyEmptyInput($firstName, $surname, $accountNumber, $sortCode, $a
 
 function invalidUserID($userId): bool
 {
-    $result;
     if (!preg_match("/^[a-zA-Z0-9]*$/", $userId)){
         $result = true;
     }
@@ -33,7 +32,7 @@ function invalidUserID($userId): bool
 
 function invalidEmail($email): bool
 {
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ // builtin function to take a parameter and check if it's an email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ // builtin function to take a parameter and check if it's a valid email type
         $result = true;
     }
     else {
@@ -94,7 +93,6 @@ function createUser($conn, $firstName, $surname, $email, $userName, $password)
 
 function loginEmptyInput($userName, $password): bool
 {
-    $result;
     if (empty($userName) || empty($password)){
         $result = true;
     } else{
@@ -127,15 +125,15 @@ function loginUser($conn, $userName, $password){
     }
 }
 
-function generateAccountNumber($conn): int
+function generateAccountNumber($conn)
 {
 
     $accountNumber = mt_rand(1000000, 9999999);
-    if(accountNumberExists($conn, $accountNumber) !== false)
+    if(accountNumberExists($conn, $accountNumber) !== false) // Checks if the account number it generated already exists
     {
         return $accountNumber;
     } else{
-        generateAccountNumber($conn);
+        generateAccountNumber($conn); // If an account number already exists, generate another one
     }
 }
 
@@ -160,13 +158,13 @@ function accountNumberExists($conn, $accountNumber)
     }
 }
 
-function generateSortCode($conn): string
+function generateSortCode($conn, $accountNumber)
 {
     $firstSection = mt_rand(100, 999);
     $secondSection = mt_rand(100, 999);
     $thirdSection = mt_rand(100, 999);
     $sortCode = $firstSection . "-" . $secondSection . "-" . $thirdSection;
-    if(sortCodeExists($conn, $sortCode) !== false)
+    if(sortCodeExists($conn, $sortCode, $accountNumber) !== false) // Checks if the sort code it generated already exists
     {
         return $sortCode;
     } else{
@@ -174,15 +172,15 @@ function generateSortCode($conn): string
     }
 }
 
-function sortCodeExists($conn, $sortCode){
-    $sql = "SELECT sortCode FROM accounts WHERE sortCode = ?;";
+function sortCodeExists($conn, $sortCode, $accountNumber){
+    $sql = "SELECT sortCode, accountNumber FROM accounts WHERE sortCode = ? AND accountNumber = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../sendMoney.php?error=stmtFailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "s",$sortCode); // Binds the data from the user to the actual statement
+    mysqli_stmt_bind_param($stmt, "ss",$sortCode, $accountNumber); // Binds the data from the user to the actual statement
     mysqli_stmt_execute($stmt); // executes the statement
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -198,7 +196,7 @@ function sortCodeExists($conn, $sortCode){
 function createAccountDetails($conn, $userName){
     $accountNumber = generateAccountNumber($conn);
     $accountType = "Personal";
-    $sortCode = generateSortCode($conn);
+    $sortCode = generateSortCode($conn, $accountNumber);
     $balance = 0;
     $sql = "INSERT INTO accounts(userName, accountNumber, balance, accountType, sortCode) VALUES (?, ?, ?, ?, ?);";
 
@@ -281,11 +279,59 @@ function balanceExists($conn, $accountNumberFrom, $amount){
     }
 }
 
+function generateTransactionID($conn){
+    $transactionID = mt_rand(0, 9999);
+    if(transactionIdExists($conn, $transactionID) !== false)
+    {
+        return $transactionID;
+    } else{
+        generateTransactionID($conn);
+    }
+}
+
+function transactionIdExists($conn, $transactionID): bool
+{
+    $sql = "SELECT * FROM transactions WHERE transactionID = $transactionID";
+    $stmt = mysqli_query($conn, $sql);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($resultData > 0)
+    {
+        return false;
+    } else{
+        return true;
+    }
+}
+
+function displayTransfers($conn, $accountNumber)
+{
+    $sql = "SELECT * FROM transactions WHERE accountNumberFrom = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../sendMoney.php?error=stmtFailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $accountNumber); // Binds the data from the user to the actual statement
+    mysqli_stmt_execute($stmt); // executes the statement
+
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($resultData > 0)
+    {
+        while ($row = mysqli_fetch_assoc($resultData)) {
+            echo "<tr><td>" . $row["transactionID"]. "</td><td>" . $row["accountNumberTo"] ."</td><td>" . $row["sortCodeTo"] .  "</td><td>" . "</td><td>" . $row["amount"] . "</td><td>" . $row["transactionDate"] . "</td><td>" . $row["reference"];
+        }
+    } else{
+        return true;
+    }
+
+}
+
+
 function sendMoney($conn, $accountNumberFrom, $accountNumberTo, $sortCodeTo, $amount, $reference)
 {
     $amount = intval($amount); // Changes amount from a string to an int to perform calculations
-    $date = date("Y-m-D");
-    $transactionID = 1212;
+    $date = date_create()->format('Y-m-d H:i:s'); // Gets current date to store
+    $transactionID = generateTransactionID($conn);
 
     $accountInfoFrom = displayAccountDetails($conn, $accountNumberFrom);
     $accountFromBalance = intval($accountInfoFrom["balance"]);
@@ -296,16 +342,16 @@ function sendMoney($conn, $accountNumberFrom, $accountNumberTo, $sortCodeTo, $am
     $accountFromBalance = $accountFromBalance - $amount;
     $accountToBalance = $accountToBalance + $amount;
 
-    $sql = "INSERT INTO transactions(transactionID, accountNumberFrom, accountNumberTo, sortCodeTo, amount, transactionDate) VALUES (?,?,?,?,?,?)";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../sendMoney.php?error=stmtFailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "iiisid", $transactionID,$accountNumberFrom, $accountNumberTo, $sortCodeTo, $amount, $date ); // Binds the data from the user to the actual statement
-    mysqli_stmt_execute($stmt); // executes the statement
+    $sql = "INSERT INTO transactions(transactionID, accountNumberFrom, accountNumberTo, sortCodeTo, amount, transactionDate, reference) VALUES ('$transactionID', '$accountNumberFrom', '$accountNumberTo', '$sortCodeTo','$amount','$date', '$reference')"; // Inserts transactions details to transactions table in data base
+    mysqli_query($conn, $sql);
 
-    echo "HELLO";
+    $sql = "UPDATE accounts SET balance = '$accountFromBalance' WHERE accountNumber = '$accountNumberFrom' "; // Updates the balance of the account that's sent the amount
+    mysqli_query($conn, $sql);
+
+    $sql = "UPDATE accounts SET balance = '$accountToBalance' WHERE accountNumber = '$accountNumberTo' "; // Updates the balance of the account that's receiving the amount
+    mysqli_query($conn, $sql);
+    header("location: ../sendMoney.php?error=none");
+    exit();
 }
 
 

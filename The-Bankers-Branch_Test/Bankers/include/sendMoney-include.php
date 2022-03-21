@@ -19,11 +19,11 @@ if(isset($_POST["submit"])) {
         exit();
     }
     if (accountNumberExists($conn, $accountNumber) !== false) { // Calls function from function.php to check if any of the boxes are blank
-        header("location: ../sendMoney.php?error=accountNumberNonExistent");
+        header("location: ../sendMoney.php?error=accountNumberIncorrect");
         exit();
     }
-    if (sortCodeExists($conn, $sortCode) !== false) {
-        header("location: ../sendMoney.php?error=sortCodeNonExistent");
+    if (sortCodeExists($conn, $sortCode, $accountNumber) !== false) {
+        header("location: ../sendMoney.php?error=sortCodeIncorrect");
         exit();
     }
     if (balanceExists($conn, $accountNumberFrom, $amount) !== false) {
@@ -36,11 +36,8 @@ if(isset($_POST["submit"])) {
     }
 
     sendMoney($conn, $accountNumberFrom, $accountNumber, $sortCode, $amount, $reference);
-
-    // sendMoney($conn, $sortCode, $accountNumber);
-
 } 
 else{
-    header("location: ../login.php");
+    header("location: ../sendMoney.php");
     exit();
 }

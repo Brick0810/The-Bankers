@@ -15,7 +15,7 @@ $accountNumber = $_SESSION["accountNumber"];
 
 $row = displayAccountDetails($conn, $accountNumber);
 
-// echo $row['userName'];
+echo "Balance: " . $row['balance'];
 
 /* echo "<h1> Account </h1>";
 foreach ($ as $) {
@@ -24,3 +24,4 @@ foreach ($ as $) {
     echo "{$["name"]}</a>"; */
 
 
+include "footer.html";
