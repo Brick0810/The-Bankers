@@ -2,29 +2,46 @@
 include "navbar.php";
 ?>
 
-<div class="leftimg">
-<img src="images/grey.jpg" alt="square"
-    width="200"
-    height="200" />
+</acc.length>
+<button class="accordion">Question 1</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
 </div>
 
-<div class="righttxt">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo urna molestie at elementum eu. Dui id ornare arcu odio ut sem. Sit amet consectetur adipiscing elit ut aliquam purus sit. Orci porta non pulvinar neque laoreet. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Arcu non sodales neque sodales. Eget nunc scelerisque viverra mauris in aliquam. Molestie ac feugiat sed lectus. Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Tempor commodo ullamcorper a lacus vestibulum sed arcu non. Sit amet facilisis magna etiam. Faucibus nisl tincidunt eget nullam non nisi est sit amet. Quis enim lobortis scelerisque fermentum.</p></div>
-<br>
-<br>
-<br>
-<br>
-<div class="rightimg">
-    <img src="images/grey.jpg" alt="square"
-        width="200"
-        height="200" />
-    </div>
-    
-    <div class="lefttxt">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo urna molestie at elementum eu. Dui id ornare arcu odio ut sem. Sit amet consectetur adipiscing elit ut aliquam purus sit. Orci porta non pulvinar neque laoreet. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Arcu non sodales neque sodales. Eget nunc scelerisque viverra mauris in aliquam. Molestie ac feugiat sed lectus. Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Tempor commodo ullamcorper a lacus vestibulum sed arcu non. Sit amet facilisis magna etiam. Faucibus nisl tincidunt eget nullam non nisi est sit amet. Quis enim lobortis scelerisque fermentum.</p></div>
+<button class="accordion">Question 2</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div>
 
-    <div class="bottomtxt">
+<button class="accordion">Question 3</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div>
+
+<button class="accordion">Question 4</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div>
+
+<div class="bottomtxt">
     <p><br>Contact Hours are: <br>
     6am – 8pm Monday to Friday<br>
     10am – 2pm Saturday and Sunday<br>
     Or use our online chat bot service whenever!</p></div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+        </script>
