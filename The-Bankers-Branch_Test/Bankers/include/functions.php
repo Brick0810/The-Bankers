@@ -10,7 +10,7 @@ function signUpEmptyInput($firstName, $surname, $email, $userId, $password, $pas
     return $result;
 }
 
-function sendMoneyEmptyInput($firstName, $surname, $accountNumber, $sortCode, $amount){
+function sendMoneyEmptyInput($accountNumber, $sortCode, $amount){
     if (empty($firstName) || empty($surname) || empty($accountNumber) || empty($sortCode) || empty($amount)){
         $result = true;
     } else{

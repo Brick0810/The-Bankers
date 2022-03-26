@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee4b98e1-6e90-45be-bace-6b2602698f08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/The-Bankers-Branch_Test/Bankers/accounts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/The-Bankers-Branch_Test/Bankers/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/The-Bankers-Branch_Test/Bankers/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/The-Bankers-Branch_Test" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -42,6 +42,9 @@
       <workItem from="1646758503379" duration="432000" />
       <workItem from="1647023347642" duration="71000" />
       <workItem from="1647023658900" duration="39000" />
+      <workItem from="1648312748863" duration="11000" />
+      <workItem from="1648312816134" duration="6000" />
+      <workItem from="1648312823229" duration="17000" />
     </task>
     <servers />
   </component>

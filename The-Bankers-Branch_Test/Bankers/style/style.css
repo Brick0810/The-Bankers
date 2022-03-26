@@ -1,129 +1,252 @@
-html{
-  background-color: darkcyan;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-h1{
-    display: inline;
-    float: left;
-    color: white;
-    font-size: 50px;
-    text-align: center;
-}
+/* Header Styling */
 
-body{
-  border-left: 60px;
-  border-right: 60px;
-  border-color: darkcyan;
-  border-style: solid;
-  background-color: white
-}
-
-a.button {
-  background-color: darkcyan;
-  border: none;
-  color: white;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block;
-  padding-left: 15px;
-  padding-right: 32px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.navbarr{
-  background-color: tomato;
-  border: 1px solid black;
-  border-radius: 4px;
-  box-shadow: 0 2px 2px -1px rgba(0 ,0 ,0, 0.55);
-  color: aqua;
-  margin: 8px 22px 8px 22px;
-  overflow: hidden;
-  width: 100%;
+header{
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 2%;
+  background-color: #40e0d0;
 }
 
-.navbar{
-  padding: 25px 0;
-  background-color: darkcyan;
-  text-align: center;
-  margin: 8px 22px 8px 22px;
-  overflow: hidden;
+h1 {
+  margin-right: auto;
+}
+
+
+/* CSS Styling for Nav Bar */
+
+#navbar{
+  margin: 0%;
+  padding: 0%;
+  background: #24252A;
+  display: inline-block;
+  width: 99.75%
+}
+
+.navbar_class{
+  list-style: none;
+}
+
+.navbar_class li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.navbar_class li a{
+  transition: all 0.3s ease 0s;
+}
+
+.navbar_class a:hover{ /* Changes colour when button on the nav bar is hovered over */
+  color: #0088a9
+}
+
+.navbar_class li, a{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+}
+
+.figure{
+  vertical-align: middle;
+}
+
+/* CSS Styling for side bar */
+#sidebar{
+  position: relative;
+  min-height: 100vh;
   width: 100%;
+  overflow: hidden;
+}
+
+.sidebar{
+  position: fixed;
+  right: -2px;
+  top: 180px;
+  height: 100%;
+  width: 240px;
+  background: #24252A;
+  text-align: center;
+  padding: 6px 14px;
+}
+
+.sidebar h1{
+  text-align: center;
+}
+
+.sidebar ul li{
+  position: relative;;
+  height: 80px;
+  width: 100%;
+  margin: 0 5px;
+  list-style: none;
+  line-height: 50px;
+}
+
+.sidebar ul li a{
+  font-family: "Montserrat", sans-serif;
+  color: #edf0f1;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 25px;
+  border-top: 2px solid rgba(5, 255, 255, .1);
+  transition: all 0.3s ease 0s;
+}
+
+.sidebar a:hover{ /* Changes colour when button on the side is hovered over */
+  color: #0088a9
+}
+
+/* CSS Styling for login and sign up */
+
+#signup{
   margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.navbar ul
-{
-   list-style: none;
+.signup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
 }
 
-.navbar li {
-    display: inline;
-    float: right;
-    font-size: 50px;
-    text-align: center;
-  }
-  
-  a {
-    display: block;
-    padding: 8px;
-    background-color: #dddddd;
-  }
+.signup h1{
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+}
 
-  .leftimg{
-    float: left;
-    padding-right: 20px;
-  }
+.signup form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
 
-  .rightimg{
-    float: right;
-  }
+form .text{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
 
-  .righttxt{
-    font-size: x-large;
-    font-weight: bold;
+.text input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  background: none;
+  margin: -5px 0 15px 5px;
+}
 
-  }
+.text li{
+  list-style: none; /* Removes the bullet points that are caused by using <li> */
+  font-family: "Montserrat", sans-serif;
+}
 
-  .lefttxt{
-    font-size: x-large;
-    font-weight: bold;
-    padding-left: 150px;
-  }
+.text label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translate(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
 
-  .bottomtxt{
-    font-size: x-large;
-    font-weight: bold;
-    padding-bottom: 15px;
-    text-align: center;
-  }
+.text select{
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+  text-decoration: none;
+}
 
-  .signup{
-    margin: auto;
-    width: 20%;
-    padding: 10px;
-  }
 
-  .signup body{
-    background-color: darkcyan;
-  }
+button[type="submit"]{
+  margin: 10px 0;
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #40e0d0;
+  border-radius: 25px;
+  font-size: 18px ;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
 
-  .signup p{
-    font-size: x-large;
-    font-weight: bold;
-  }
+.signup_link{
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+  text-decoration: none;
+}
 
-  .signup ul{
-    list-style: none;
-  }
+.signup_link a{
+  font-size: 16px;
+  color: #40e0d0;
+}
 
-  .signup li{
-    margin: 10px 0;
-  }
+.signup_link a:hover{
+  text-decoration: underline;
+}
 
-  .footer{
+/* Accounts View Styling */
+
+#accounts{
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.accounts_class{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+}
+
+
+.accounts_class li{
+  list-style: none; /* Removes the bullet points that are caused by using <li> */
+  font-family: "Montserrat", sans-serif;
+}
+
+.balance{
+  position: fixed;
+  margin: 5px 0;
+}
+
+.accNumber{
+  position: fixed;
+  margin: 10px 500px;
+  font-size: 17px;
+}
+
+
+
+
+.footer{
     position: fixed;
     left: 0;
     bottom: 0;
@@ -131,7 +254,7 @@ a.button {
     background-color: darkcyan;
     color: white;
     text-align: center;
-  }
+}
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
@@ -162,31 +285,7 @@ a.button {
   text-align: center;
 }
 
-/* The side navigation menu */
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 300px;
-  border: 10px;
-  border-color: black;
-  background-color: darkcyan;
-  float: right;
-  height: 100%;
-  overflow: auto;
-  font-size: large;
-}
-
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: white;
-  padding: 16px;
-  text-decoration: none;
-  font-size: large;
-  font-weight: bold;
-}
-
-.sidebar li{
+#accounts{
   list-style: none;
 }
 
@@ -197,4 +296,9 @@ a.button {
   font-weight: bold;
   text-align: center;
   padding: 15px;
+}
+
+.accounts_class{
+  position: fixed;
+  bottom: 25%;
 }

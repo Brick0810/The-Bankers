@@ -25,4 +25,8 @@ echo "<table border = 1>
     </tr>";
 displayTransfers($conn, $accountNumber);
 
+
 include "footer.html";
+
+
+

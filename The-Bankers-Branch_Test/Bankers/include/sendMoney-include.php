@@ -3,8 +3,6 @@
 session_start();
 
 if(isset($_POST["submit"])) {
-    $firstName = $_POST["firstName"];
-    $surname = $_POST["surname"];
     $accountNumber = $_POST["accountNumber"];
     $sortCode = $_POST["sortCode"];
     $amount = $_POST["amount"];
@@ -14,7 +12,7 @@ if(isset($_POST["submit"])) {
     require_once "connection.php";
     require_once "functions.php";
 
-    if (sendMoneyEmptyInput($firstName, $surname, $accountNumber, $sortCode, $amount) !== false) {
+    if (sendMoneyEmptyInput($accountNumber, $sortCode, $amount) !== false) {
         header("location: ../sendMoney.php?error=emptyInput");
         exit();
     }

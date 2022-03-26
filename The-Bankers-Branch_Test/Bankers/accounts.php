@@ -14,6 +14,12 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
 $accountNumber = $_SESSION["accountNumber"];
 
 $row = displayAccountDetails($conn, $accountNumber);
+
+$balance = $row['balance'];
+$accNumber = $row['accountNumber'];
+$sortCode = $row['sortCode'];
+
+/* $row = displayAccountDetails($conn, $accountNumber);
 ?>
 <div class="account">
     <?php
@@ -26,6 +32,21 @@ $row = displayAccountDetails($conn, $accountNumber);
         echo "Account Type: " . $row['accountType'];
     ?>
 </div>
+*/
+?>
+
+<body id="accounts">
+    <div class="accounts_class">
+        <?php
+        echo "<div class='balance'><li>Balance:</li></div>";
+        echo "<div class='accNumber'><li>$accNumber</li></div>";
+        echo "<div class='sortCode'><li>$sortCode</li></div>";
+        ?>
+    </div>
+
+
+</body>
 
 <?php
 include "footer.html";
+?>
