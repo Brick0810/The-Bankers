@@ -4,13 +4,13 @@
 
 <div class="navbar">
 <ul>
-    <h1> The Bankers</h1>
+    <h1><a href="index.php" class="button">The Bankers</a></h1>
 
     <?php
         if(isset($_SESSION[userName])){
             echo "<li><a href='accountDetails.php' class=button><img src='images/settings.png' alt='square' width='75' height='75' /></a></li>";
-            echo "<li><a href='accounts.php' class=button>Accounts</a></li>";
             echo "<li><a href='help.php' class=button>Help</a></li>";
+            echo "<li><a href='accounts.php' class=button>Accounts</a></li>";
         } else{
             echo "<li><a href='login.php' class=button>Login</a></li>";
             echo "<li><a href='signup.php' class=button>Sign Up</a></li>";

@@ -236,7 +236,7 @@ function getAccountNumber($conn, $userName)
 
 function displayAccountDetails($conn, $accountNumber)
 {
-    $sql = "SELECT userName, accountNumber, balance, sortCode FROM accounts WHERE accountNumber = ?;";
+    $sql = "SELECT userName, accountNumber, balance, sortCode, accountType FROM accounts WHERE accountNumber = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtFailed");
@@ -318,7 +318,7 @@ function displayTransfers($conn, $accountNumber)
     if ($resultData > 0)
     {
         while ($row = mysqli_fetch_assoc($resultData)) {
-            echo "<tr><td>" . $row["transactionID"]. "</td><td>" . $row["accountNumberTo"] ."</td><td>" . $row["sortCodeTo"] .  "</td><td>" . "</td><td>" . $row["amount"] . "</td><td>" . $row["transactionDate"] . "</td><td>" . $row["reference"];
+            echo "<tr><td>" . $row["transactionID"]. "</td><td>" . $row["accountNumberTo"] ."</td><td>" . $row["sortCodeTo"] .  "</td><td>" . $row["amount"] . "</td><td>" . $row["transactionDate"] . "</td><td>" . $row["reference"] . "</td></tr>";
         }
     } else{
         return true;

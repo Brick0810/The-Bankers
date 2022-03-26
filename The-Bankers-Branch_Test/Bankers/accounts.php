@@ -23,8 +23,9 @@ $row = displayAccountDetails($conn, $accountNumber);
         echo "<br>";
         echo "Sort Code: " . $row['sortCode'];
         echo "<br>";
-        echo "Account Type: " . $row['sortCode'];
+        echo "Account Type: " . $row['accountType'];
     ?>
-</div
+</div>
+
 <?php
 include "footer.html";
