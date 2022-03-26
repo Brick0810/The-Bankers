@@ -14,14 +14,17 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
 $accountNumber = $_SESSION["accountNumber"];
 
 $row = displayAccountDetails($conn, $accountNumber);
-
-echo "Balance: " . $row['balance'];
-
-/* echo "<h1> Account </h1>";
-foreach ($ as $) {
-    echo "<li>";
-    echo "Name: ";
-    echo "{$["name"]}</a>"; */
-
-
+?>
+<div class="account">
+    <?php
+        echo "Balance: " . $row['balance'];
+        echo "<br>";
+        echo "Account Number: " . $row['accountNumber'];
+        echo "<br>";
+        echo "Sort Code: " . $row['sortCode'];
+        echo "<br>";
+        echo "Account Type: " . $row['sortCode'];
+    ?>
+</div
+<?php
 include "footer.html";

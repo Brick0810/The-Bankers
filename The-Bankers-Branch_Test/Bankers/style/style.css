@@ -139,11 +139,12 @@ a.button {
   color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 87.53%;
   text-align: center;
   border: none;
   outline: none;
   transition: 0.4s;
+  float: middle;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -165,7 +166,9 @@ a.button {
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 300px;
+  border: 10px;
+  border-color: black;
   background-color: darkcyan;
   float: right;
   height: 100%;
@@ -181,4 +184,17 @@ a.button {
   text-decoration: none;
   font-size: large;
   font-weight: bold;
+}
+
+.sidebar li{
+  list-style: none;
+}
+
+.account{
+  background-color: darkcyan;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
 }
