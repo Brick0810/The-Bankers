@@ -11,7 +11,7 @@ function signUpEmptyInput($firstName, $surname, $email, $userId, $password, $pas
 }
 
 function sendMoneyEmptyInput($accountNumber, $sortCode, $amount){
-    if (empty($firstName) || empty($surname) || empty($accountNumber) || empty($sortCode) || empty($amount)){
+    if (empty($accountNumber) || empty($sortCode) || empty($amount)){
         $result = true;
     } else{
         $result = false;
@@ -197,7 +197,7 @@ function createAccountDetails($conn, $userName){
     $accountNumber = generateAccountNumber($conn);
     $accountType = "Personal";
     $sortCode = generateSortCode($conn, $accountNumber);
-    $balance = 0;
+    $balance = number_format(0, 2);
     $sql = "INSERT INTO accounts(userName, accountNumber, balance, accountType, sortCode) VALUES (?, ?, ?, ?, ?);";
 
     $stmt = mysqli_stmt_init($conn);
@@ -206,7 +206,7 @@ function createAccountDetails($conn, $userName){
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "siiss", $userName, $accountNumber, $balance, $accountType, $sortCode);
+    mysqli_stmt_bind_param($stmt, "sidss", $userName, $accountNumber, $balance, $accountType, $sortCode);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
@@ -280,7 +280,7 @@ function balanceExists($conn, $accountNumberFrom, $amount){
 }
 
 function generateTransactionID($conn){
-    $transactionID = mt_rand(0, 9999);
+    $transactionID = mt_rand(1000, 9999);
     if(transactionIdExists($conn, $transactionID) !== false)
     {
         return $transactionID;
@@ -304,43 +304,41 @@ function transactionIdExists($conn, $transactionID): bool
 
 function displayTransfers($conn, $accountNumber)
 {
-    $sql = "SELECT * FROM transactions WHERE accountNumberFrom = ?;";
+    $sql = "SELECT * FROM transactions WHERE accountNumberFrom = ? || accountNumberTo = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../sendMoney.php?error=stmtFailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "i", $accountNumber); // Binds the data from the user to the actual statement
+    mysqli_stmt_bind_param($stmt, "ii", $accountNumber, $accountNumber); // Binds the data from the user to the actual statement
     mysqli_stmt_execute($stmt); // executes the statement
 
+    $array = array();
     $resultData = mysqli_stmt_get_result($stmt);
-    if ($resultData > 0)
-    {
+    if ($resultData > 0) {
         while ($row = mysqli_fetch_assoc($resultData)) {
-            echo "<tr><td>" . $row["transactionID"]. "</td><td>" . $row["accountNumberTo"] ."</td><td>" . $row["sortCodeTo"] .  "</td><td>" . $row["amount"] . "</td><td>" . $row["transactionDate"] . "</td><td>" . $row["reference"] . "</td></tr>";
+            $array[] = $row;
         }
-    } else{
-        return true;
     }
-
+    return $array;
 }
 
 
 function sendMoney($conn, $accountNumberFrom, $accountNumberTo, $sortCodeTo, $amount, $reference)
 {
-    $amount = intval($amount); // Changes amount from a string to an int to perform calculations
+    $amount = number_format($amount, 2); // Changes amount from a string to a float to perform calculations
     $date = date_create()->format('Y-m-d H:i:s'); // Gets current date to store
     $transactionID = generateTransactionID($conn);
 
     $accountInfoFrom = displayAccountDetails($conn, $accountNumberFrom);
-    $accountFromBalance = intval($accountInfoFrom["balance"]);
+    $accountFromBalance = number_format($accountInfoFrom["balance"], 2);
 
     $accountInfoTo = displayAccountDetails($conn, $accountNumberTo);
-    $accountToBalance = intval($accountInfoTo["balance"]);
+    $accountToBalance = number_format($accountInfoTo["balance"], 2);
 
-    $accountFromBalance = $accountFromBalance - $amount;
-    $accountToBalance = $accountToBalance + $amount;
+    $accountFromBalance = number_format($accountFromBalance - $amount, 2);
+    $accountToBalance = number_format($accountToBalance + $amount, 2);
 
     $sql = "INSERT INTO transactions(transactionID, accountNumberFrom, accountNumberTo, sortCodeTo, amount, transactionDate, reference) VALUES ('$transactionID', '$accountNumberFrom', '$accountNumberTo', '$sortCodeTo','$amount','$date', '$reference')"; // Inserts transactions details to transactions table in data base
     mysqli_query($conn, $sql);

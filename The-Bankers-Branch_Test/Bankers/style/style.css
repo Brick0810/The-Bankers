@@ -220,9 +220,9 @@ button[type="submit"]{
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 300px;
-  background: white;
+  width: 700px;
+  height: 400px;
+  background: #99D9EA;
   border-radius: 10px;
 }
 
@@ -232,19 +232,98 @@ button[type="submit"]{
   font-family: "Montserrat", sans-serif;
 }
 
-.balance{
+.accounts_class .balance{
   position: fixed;
-  margin: 5px 0;
+  margin: 25px 16px;
+  font-size: 30px;
 }
 
-.accNumber{
+.accounts_class .amount{
   position: fixed;
-  margin: 10px 500px;
-  font-size: 17px;
+  margin: 80px 90px;
+  font-size: 160px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.accounts_class .accNumber{
+  position: fixed;
+  margin-left: 550px;
+  margin-top: 15px;
+  font-size: 18px;
+}
+.accounts_class .sortCode{
+  position: fixed;
+  margin-left: 550px;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.accounts_class .accountType{
+  position: fixed;
+  margin-left: 550px;
+  margin-top: 65px;
+  font-size: 18px;
+}
+
+.accounts_class .sendMoney{
+  margin-top: 290px;
+  margin-left: 500px;
+  font-size: 19px;
+  color: #00008b;
+  text-decoration: none;
+}
+
+.accounts_class .viewAccount{
+  margin-top: 10px;
+  margin-left: 500px;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+.accounts_class a{
+  font-size: 19px;
+  color: #00008b;
+}
+
+.accounts_class a:hover{
+  text-decoration: underline;
 }
 
 
+/* Styling for transfers page */
 
+.transfers table{
+  width: 650px;
+  margin: 450px auto;
+  border-collapse: collapse;
+}
+
+.transfers tr{
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.transfers th{
+  font-family: "Montserrat", sans-serif;
+}
+
+.transfers th, td{
+  border: none;
+  height: 30px;
+  padding: 3px;
+  font-size: 20px;
+}
+
+.transfers .id{
+  text-align: left;
+}
+
+.transfers .date{
+  text-align: center;
+}
+
+.transfers .amount{
+  text-align: right;
+}
 
 .footer{
     position: fixed;
@@ -301,4 +380,30 @@ button[type="submit"]{
 .accounts_class{
   position: fixed;
   bottom: 25%;
+}
+
+.dropinfotrans {
+  background-color: #dea0a0;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px;
+  text-align: left;
+  font-size: 16px;
+
+}
+
+.active, .dropinfotrans:hover {
+  background-color: #e0a58d;
+
+}
+
+.transcontent {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #d1b2aa;
+  border: 10px;
+
 }
