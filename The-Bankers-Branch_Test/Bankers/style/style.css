@@ -420,6 +420,7 @@ transactionBox_class{
 }
 
 .wrapper{
+  position: fixed;
   margin: 150px 250px;
   padding: 50px;
   background: #e7e7e7;
@@ -427,7 +428,6 @@ transactionBox_class{
   width: 13.5%;
   height: 45%;
   bottom: 60px;
-  position: relative;
   transition: all 5s ease-in-out;
 }
 
