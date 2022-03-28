@@ -34,6 +34,7 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
             </div>
             <?php
             if(isset($_GET['error'])){ // checks against the URL to see if the text error exists in the URL
+                echo "<div class ='error'>";
                 if($_GET["error"] == "emptyInput"){
                     echo "<p>Please fill in all the boxes!</p>";
                 }
@@ -55,6 +56,7 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
                 else if ($_GET["error"] == "none") {
                     echo "<script>alert('The transactions has completed successfully!');</script>";
                 }
+                echo "</div>";
             }
             ?>
         </form>

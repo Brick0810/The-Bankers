@@ -39,7 +39,8 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="amount">Amount</th>
+                    <th class="date">DATE</th>
+                    <th class="amount">AMOUNT</th>
                 </tr>
             </thead>
 
@@ -62,6 +63,7 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
                             $colour = "#B03624";
                         }
                         echo "<td style='background-color:$colour'>$transactionID</td>";
+                        echo "<td class='date' style='background-color:$colour'>$transactionDate</td>";
                         echo "<td class='amount' style='background-color: $colour'>$transactionAmount</td>";
                         echo "</tr>";
                         $transactionAmount = number_format($value['amount'], 2);
@@ -91,6 +93,7 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
                     }
 
                 ?>
+
             </tbody>
         </table>
     </div>
@@ -106,6 +109,11 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
         }
     }
 </script>
+
+<?php
+
+
+?>
 
 <?php
 
