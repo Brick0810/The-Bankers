@@ -420,11 +420,13 @@ transactionBox_class{
 }
 
 .wrapper{
-  margin: 150px auto;
-  padding: 20px;
+  margin: 150px 250px;
+  padding: 50px;
   background: #e7e7e7;
   border-radius: 5px;
-  width: 15%;
+  width: 13.5%;
+  height: 45%;
+  bottom: 60px;
   position: relative;
   transition: all 5s ease-in-out;
 }
@@ -446,7 +448,7 @@ transactionBox_class{
 }
 
 .wrapper .content{
-  max-height: 30%;
+  max-height: 100%;
   overflow: auto;
 }
 
