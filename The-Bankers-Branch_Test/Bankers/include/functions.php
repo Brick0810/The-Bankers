@@ -304,7 +304,7 @@ function transactionIdExists($conn, $transactionID): bool
 
 function displayTransfers($conn, $accountNumber)
 {
-    $sql = "SELECT * FROM transactions WHERE accountNumberFrom = ? || accountNumberTo = ?;";
+    $sql = "SELECT * FROM transactions WHERE accountNumberFrom = ? || accountNumberTo = ? ORDER BY transactionDate DESC;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../sendMoney.php?error=stmtFailed");

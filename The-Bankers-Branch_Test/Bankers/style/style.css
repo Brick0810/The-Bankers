@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald:wght@500&display=swap');
 
 /* Header Styling */
 
@@ -16,7 +17,6 @@ header{
 h1 {
   margin-right: auto;
 }
-
 
 /* CSS Styling for Nav Bar */
 
@@ -216,7 +216,7 @@ button[type="submit"]{
 }
 
 .accounts_class{
-  position: absolute;
+  position: fixed;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -293,24 +293,36 @@ button[type="submit"]{
 /* Styling for transfers page */
 
 .transfers table{
-  width: 650px;
+  position: fixed;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 680px;
   margin: 450px auto;
-  border-collapse: collapse;
-}
-
-.transfers tr{
-  border-bottom: 1px solid #cbcbcb;
+  border-spacing: 0px;
+  border: 4px solid #ACACAC;
+  border-radius: 10px;
 }
 
 .transfers th{
-  font-family: "Montserrat", sans-serif;
+  font-family: "Oswold", sans-serif;
 }
 
 .transfers th, td{
   border: none;
   height: 30px;
-  padding: 3px;
+  padding: 13px;
   font-size: 20px;
+  font-family: Oswold, sans-serif;
+  color: white;
+  font-weight: bold;
+  width: 33.333333%;
+  border-bottom: 4px solid #ACACAC;
+}
+
+.transfers td{
+  cursor:pointer;
+
 }
 
 .transfers .id{
@@ -382,28 +394,81 @@ button[type="submit"]{
   bottom: 25%;
 }
 
-.dropinfotrans {
-  background-color: #dea0a0;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: 1px;
-  text-align: left;
-  font-size: 16px;
-
-}
 
 .active, .dropinfotrans:hover {
   background-color: #e0a58d;
+}
+
+/* Styling for transaction box */
+
+#transactionBox{
+  position: relative;
+  display: none;
+  overflow: hidden;
+}
+
+transactionBox_class{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms;
+  opacity: 0;
 
 }
 
-.transcontent {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #d1b2aa;
-  border: 10px;
+.wrapper{
+  margin: 150px auto;
+  padding: 20px;
+  background: #e7e7e7;
+  border-radius: 5px;
+  width: 15%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
 
+.wrapper h2{
+  margin-top: 0;
+  color: #333;
+}
+
+.wrapper .close{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.wrapper .content{
+  max-height: 30%;
+  overflow: auto;
+}
+
+.container{
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  padding: 20px 0;
+}
+
+form label{
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.container p{
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
 }
