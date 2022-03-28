@@ -151,6 +151,15 @@ form .text{
   margin: -5px 0 15px 5px;
 }
 
+.text .messageBox{
+  width: 100%;
+  padding: 0 5px;
+  height: 90px;
+  font-size: 16px;
+  background: none;
+  margin: -5px 0 15px 5px;
+}
+
 .text li{
   list-style: none; /* Removes the bullet points that are caused by using <li> */
   font-family: "Montserrat", sans-serif;
@@ -172,6 +181,9 @@ form .text{
   color: #666666;
   text-decoration: none;
 }
+
+
+
 
 
 button[type="submit"]{
@@ -203,6 +215,13 @@ button[type="submit"]{
 
 .signup_link a:hover{
   text-decoration: underline;
+}
+
+
+.error p{
+  text-align: center;
+  font-size: 22px;
+  color: red;
 }
 
 /* Accounts View Styling */
