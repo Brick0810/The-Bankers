@@ -427,7 +427,7 @@ transactionBox_class{
   border-radius: 5px;
   width: 13.5%;
   height: 45%;
-  bottom: 60px;
+  bottom: 200px;
   transition: all 5s ease-in-out;
 }
 
