@@ -30,6 +30,7 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
             echo "<div class='sortCode'><li>$sortCode</li></div>";
             echo "<div class='accountType'><li>$accountType</li></div>";
             echo "<div class='sendMoney'><a href='sendMoney.php'>Send Money</a></div>";
+            echo "<div class='viewAccount'><li><a href='accounts.php'>Go back to accounts</a></li></div>"
         ?>
     </div>
 
@@ -38,7 +39,6 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="date">Date</th>
                     <th class="amount">Amount</th>
                 </tr>
             </thead>
@@ -47,31 +47,71 @@ if($_SESSION["userName"] != ""){ // Checks if the user is logged in, so they can
                 <?php
                     $transactionList = displayTransfers($conn, $accountNumber);
                     foreach ($transactionList as $value){
-                        echo "<tr>";
                         $transactionID = $value['transactionID'];
-                        $transactionDate = $value['transactionDate'];
                         $transactionAmount = $value['amount'];
+                        $transactionDate = $value['transactionDate'];
+                        $reference = $value['reference'];
+                        $accountNumberFrom = $value['accountNumberFrom'];
+                        $accountNumberTo = $value['accountNumberTo'];
+                        echo "<tr onclick='displayTransaction()'>";
                         if($value['accountNumberFrom'] == $accountNumber){
-                            $transactionAmount = "IN: £" . number_format($transactionAmount, 2);
-                            $colour = "#dea0a0";
+                            $transactionAmount = "<div style='font-family: Oswold, sans-serif'> IN: £" . number_format($transactionAmount, 2);
+                            $colour = "#3DCC5D";
                         } else{
-                            $transactionAmount = "OUT: £" . number_format($transactionAmount, 2);
-                            $colour = "#013220";
+                                $transactionAmount = "<div style='font-family: Oswold, sans-serif'> OUT: £" . number_format($transactionAmount, 2);
+                            $colour = "#B03624";
                         }
-                        echo "<td style='background-color: $colour'>$transactionID</td>";
-                        echo "<td class='date' style='background-color: $colour'>$transactionDate</td>";
+                        echo "<td style='background-color:$colour'>$transactionID</td>";
                         echo "<td class='amount' style='background-color: $colour'>$transactionAmount</td>";
                         echo "</tr>";
+                        $transactionAmount = number_format($value['amount'], 2);
+                        echo "<div class='transactionBox_class' id='transactionBox'>
+                                <div class='wrapper'>
+                                    <h2>Transaction Details</h2>
+                                        <div class='content'>
+                                            <div class='container'>
+                                                <form>         
+                                                    <label>Transaction ID:</label>
+                                                    <p>$transactionID</p>
+                                                    <label>Amount:</label>
+                                                    <p>$transactionAmount</p>
+                                                    <label>Date:</label>
+                                                    <p>$transactionDate</p>
+                                                    <label>Reference:</label>
+                                                    <p>$reference</p>
+                                                    <label>Account Number From:</label>
+                                                    <p>$accountNumberFrom</p>
+                                                    <label>Account Number To:</label>
+                                                    <p>$accountNumberTo</p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>";
                     }
+
                 ?>
             </tbody>
         </table>
     </div>
 </body>
 
+<script>
+    function displayTransaction() {
+        var x = document.getElementById("transactionBox");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<?php
+
+
+?>
 
 <?php
 include "footer.html";
 ?>
-
-
