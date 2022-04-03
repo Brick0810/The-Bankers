@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1fff539e-55c7-4bc8-a980-924765655b9a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Bankers/images/help.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bankers/helpView.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bankers/helpView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bankers/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/Bankers/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bankers/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Bankers/style/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bankers/transfers.php" beforeDir="false" afterPath="$PROJECT_DIR$/Bankers/transfers.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="26GMN5025XHBmOwmtg2V4KlAG2j" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Year 2 Computer Science/Relational Databases and Web Integration/Coursework 3" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\Documents\GitHub\The-Bankers\The-Bankers-Branch_Test\Bankers\images" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1fff539e-55c7-4bc8-a980-924765655b9a" name="Changes" comment="" />
+      <created>1647045428927</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647045428927</updated>
+      <workItem from="1647045430817" duration="5662000" />
+      <workItem from="1647089765278" duration="2603000" />
+      <workItem from="1647185259357" duration="591000" />
+      <workItem from="1647266222345" duration="2407000" />
+      <workItem from="1647786973038" duration="7860000" />
+      <workItem from="1647812459999" duration="78000" />
+      <workItem from="1647872695143" duration="1096000" />
+      <workItem from="1647874941185" duration="8615000" />
+      <workItem from="1647885076001" duration="161000" />
+      <workItem from="1648046548883" duration="552000" />
+      <workItem from="1648305809435" duration="905000" />
+      <workItem from="1648306730272" duration="520000" />
+      <workItem from="1648312841867" duration="15762000" />
+      <workItem from="1648333556573" duration="3910000" />
+      <workItem from="1648384762710" duration="17011000" />
+      <workItem from="1648413134332" duration="887000" />
+      <workItem from="1648464326883" duration="24755000" />
+      <workItem from="1648493058495" duration="1063000" />
+      <workItem from="1648500188218" duration="5095000" />
+      <workItem from="1648843836130" duration="121000" />
+      <workItem from="1648997345657" duration="4451000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
